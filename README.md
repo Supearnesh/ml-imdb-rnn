@@ -70,7 +70,7 @@ Click on the 'new' dropdown menu and select 'terminal'. By default, the working 
 
 ```
 cd SageMaker
-git clone https://github.com/Supearnesh/sagemaker-deployment.git
+git clone https://github.com/Supearnesh/ml-imdb-rnn.git
 exit
 ```
 
