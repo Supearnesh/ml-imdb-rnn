@@ -652,7 +652,7 @@ The public API to access the SageMaker model has now been set up. Make sure to c
 The publicly available API can now be used in a web application. For this project's purposes, it is a simple static html file which can make use of the public API created earlier. The `index.html` file located in the `website` folder needs to contain a reference to the public API URL, with which it can subsequently access the Lambda function and the SageMaker endpoint.
 
 
-> **Important Note** In order for the web app to communicate with the SageMaker endpoint, the endpoint has to actually be deployed and running. This means that someone is paying for the resources to keep it up and running. Make sure that the endpoint is running when the web app needs to be used but that it is shut down when not needed, otherwise there will be a surprisingly large AWS bill at the end of the month.
+> **Important Note** In order for the web app to communicate with the SageMaker endpoint, the endpoint has to actually be deployed and running. This means that someone is paying for the resources to keep it up. Make sure that the endpoint is running when the web app needs to be used but ensure that it is shut down when not needed. Otherwise, there will be a surprisingly large AWS bill at the end of the month.
 
 
 
@@ -681,7 +681,7 @@ Expected Output: Your review was POSITIVE!
 
 ### Important - Deleting the endpoint
 
-Always remember to shut down the model endpoint if it is no longer being used. AWS charges for the duration that the endpoint is running so it is left on there could be an unexpectedly large AWS bill.
+Always remember to shut down the model endpoint if it is no longer being used. AWS charges for the duration that an endpoint is left running, so if it is left on then there could be an unexpectedly large AWS bill.
 
 
 ```python
