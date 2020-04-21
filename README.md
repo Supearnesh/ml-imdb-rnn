@@ -2,7 +2,29 @@
 
 
 
+
 ## Table Of Contents
+
+
+- [Introduction](#introduction)
+- [Setup Instructions](#setup-instructions)
+  * [Log in to the AWS console and create a notebook instance](#log-in-to-the-aws-console-and-create-a-notebook-instance)
+  * [Use git to clone the repository into the notebook instance](#use-git-to-clone-the-repository-into-the-notebook-instance)
+- [Project Details](#project-details)
+  * [Step 1: Data collection](#step-1---data-collection)
+  * [Step 2: Data cleaning](#step-2---data-cleaning)
+  * [Step 3: Feature labelling](#step-3---feature-labelling)
+  * [Step 4: Uploading processed data to S3](#step-4---uploading-processed-data-to-s3)
+  * [Step 5: Building and training the PyTorch model](#step-5---building-and-training-the-pytorch-model)
+  * [Step 6: Deploying the trained model for testing](#step-6---deploying-the-trained-model-for-testing)
+  * [Step 7: Model validation using a batch transform job](#step-7---model-validation-using-a-batch-transform-job)
+  * [Step 8: Using the deployed model for the web application](#step-8---using-the-deployed-model-for-the-web-application)
+    + [Part A - Declaring an IAM Role for the Lambda function](#part-a---declaring-an-iam-role-for-the-lambda-function)
+    + [Part B - Creating a Lambda function](#part-b---creating-a-lambda-function)
+    + [Part C - Setting up the API Gateway](#part-c---setting-up-the-api-gateway)
+    + [Part D - Deploying the web application](#part-d---deploying-the-web-application)
+  * [Important: Deleting the endpoint](#important---deleting-the-endpoint)
+
 
 
 
@@ -81,7 +103,7 @@ This was the general outline followed for this SageMaker project:
 
 
 
-### Step 1: Data collection
+### Step 1 - Data collection
 
 
 The [IMDb dataset](http://ai.stanford.edu/~amaas/data/sentiment/) contains 25,000 of each positive and negative IMDb reviews, which were used to train this model.
@@ -110,7 +132,7 @@ The [IMDb dataset](http://ai.stanford.edu/~amaas/data/sentiment/) contains 25,00
 
 
 
-### Step 2: Data cleaning
+### Step 2 - Data cleaning
 
 
 It is necessary to perform some initial data processing, as well as separate the training and testing datasets. Much to my chagrin, a validation dataset was not allocated in this step.
@@ -220,7 +242,7 @@ The most important thing being done above is the utilization of `PorterStemmer` 
 
 
 
-### Step 3: Feature labelling
+### Step 3 - Feature labelling
 
 
 For the model to read the input and make effective decisions about each review, a few tasks need to be completed. First, a vocabulary needs to be constructed which contains *5,000* of the most frequently occurring words across all reviews in the training dataset. Second, each review needs to be represented as an array of *5,000* integers based on how many times each word in the vocabulary occurs in the current example. Third, the reviews need to be standardized to a fixed length of *500* words so that their arrays contain an equal number of elements.
@@ -307,7 +329,7 @@ The above contains our second and third steps merged into one method `convert_an
 
 
 
-### Step 4: Uploading processed data to S3
+### Step 4 - Uploading processed data to S3
 
 
 Now that the training and test datasets are processed, the data must be uploaded to S3 in order to proceed with training the neural net. Fortunately, this is fairly straightforward to do in SageMaker. The training data needs to be uploaded to the default SageMaker S3 bucket so that access can be provided while training the RNN model.
@@ -332,7 +354,7 @@ input_data = sagemaker_session.upload_data(path=data_dir, bucket=bucket, key_pre
 
 
 
-### Step 5: PyTorch model - building and training
+### Step 5 - Building and training the PyTorch model
 
 
 A model consists of model artifacts, training code, and inference code; each of these components interact with each other. The neural network is implemented in PyTorch using the model object from `model.py`, located in the `train` folder. The implementation is included below.
@@ -443,7 +465,7 @@ estimator.fit({'training': input_data})
 
 
 
-### Step 6: Deploying the trained model for testing
+### Step 6 - Deploying the trained model for testing
 
 
 This step could not have been made easier, SageMaker and AWS do all of the heavy lifting here again.
@@ -459,7 +481,7 @@ predictor = estimator.deploy(initial_instance_count = 1, instance_type = 'ml.m4.
 
 
 
-### Step 7: Model validation using a batch transform job
+### Step 7 - Model validation using a batch transform job
 
 
 Validating that the trained model is functioning within the expected parameters is straightforward by using the testing dataset that was creating via the data collection and cleaning methods from earlier.
@@ -503,7 +525,7 @@ The model seems to be performing reasonably well with an accuracy score that is 
 
 
 
-### Step 8: Using the deployed model for the web application
+### Step 8 - Using the deployed model for the web application
 
 
 In order to achieve the end-to-end web application deployment shown in the below diagram, usage of additional AWS services is required.
@@ -657,7 +679,7 @@ Expected Output: Your review was POSITIVE!
 
 
 
-### Important: Deleting the endpoint
+### Important - Deleting the endpoint
 
 Always remember to shut down the model endpoint if it is no longer being used. AWS charges for the duration that the endpoint is running so it is left on there could be an unexpectedly large AWS bill.
 
