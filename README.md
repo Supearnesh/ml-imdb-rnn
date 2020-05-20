@@ -80,7 +80,7 @@ After you have finished, close the terminal window.
 
 
 
-## Project Details
+## Machine Learning Pipeline
 
 
 This was the general outline followed for this SageMaker project:
@@ -680,6 +680,7 @@ Expected Output: Your review was POSITIVE!
 
 
 ### Important - Deleting the endpoint
+
 
 Always remember to shut down the model endpoint if it is no longer being used. AWS charges for the duration that an endpoint is left running, so if it is left on then there could be an unexpectedly large AWS bill.
 
