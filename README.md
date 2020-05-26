@@ -10,7 +10,7 @@
 - [Setup Instructions](#setup-instructions)
   * [Log in to the AWS console and create a notebook instance](#log-in-to-the-aws-console-and-create-a-notebook-instance)
   * [Use git to clone the repository into the notebook instance](#use-git-to-clone-the-repository-into-the-notebook-instance)
-- [Project Details](#project-details)
+- [Machine Learning Pipeline](#machine-learning-pipeline)
   * [Step 1: Data collection](#step-1---data-collection)
   * [Step 2: Data cleaning](#step-2---data-cleaning)
   * [Step 3: Feature labelling](#step-3---feature-labelling)
