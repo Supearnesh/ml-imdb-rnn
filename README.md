@@ -98,7 +98,6 @@ This was the general outline followed for this SageMaker project:
     * b. Creating a Lambda function
     * c. Setting up the API Gateway
     * d. Deploying the web application
-9. Important: Deleting the endpoint
 
 
 
