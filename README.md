@@ -86,19 +86,19 @@ After you have finished, close the terminal window.
 This was the general outline followed for this SageMaker project:
 
 
-1. Data collection
-2. Data cleaning
-3. Feature labelling
-4. Uploading processed data to S3
-5. PyTorch model - building and training
-6. Deploying the trained model for testing
-7. Model validation using a batch transform job
-8. Using the deployed model for the web application
-    a. Declaring an IAM Role for the Lambda function
-    b. Creating a Lambda function
-    c. Setting up the API Gateway
-    d. Deploying the web application
-9. Important: Deleting the endpoint
+* 1. Data collection
+* 2. Data cleaning
+* 3. Feature labelling
+* 4. Uploading processed data to S3
+* 5. PyTorch model - building and training
+* 6. Deploying the trained model for testing
+* 7. Model validation using a batch transform job
+* 8. Using the deployed model for the web application
+    * a. Declaring an IAM Role for the Lambda function
+    * b. Creating a Lambda function
+    * c. Setting up the API Gateway
+    * d. Deploying the web application
+* 9. Important: Deleting the endpoint
 
 
 
