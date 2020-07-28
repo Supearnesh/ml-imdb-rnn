@@ -1,4 +1,4 @@
-# Sentiment Analysis of IMDb Reviews using a Recurrent Neural Network (RNN)
+# Sentiment Analysis of IMDb Reviews using a Recurrent Neural Network
 
 
 
