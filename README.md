@@ -13,7 +13,7 @@
 - [Machine Learning Pipeline](#machine-learning-pipeline)
   * [Step 1 - Data collection](#step-1---data-collection)
   * [Step 2 - Data cleaning](#step-2---data-cleaning)
-  * [Step 3 - Feature labelling](#step-3---feature-labelling)
+  * [Step 3 - Feature labeling](#step-3---feature-labeling)
   * [Step 4 - Uploading processed data to S3](#step-4---uploading-processed-data-to-s3)
   * [Step 5 - Building and training the PyTorch model](#step-5---building-and-training-the-pytorch-model)
   * [Step 6 - Deploying the trained model for testing](#step-6---deploying-the-trained-model-for-testing)
@@ -88,7 +88,7 @@ This was the general outline followed for this SageMaker project:
 
 1. Data collection
 2. Data cleaning
-3. Feature labelling
+3. Feature labeling
 4. Uploading processed data to S3
 5. PyTorch model - building and training
 6. Deploying the trained model for testing
@@ -241,7 +241,7 @@ The most important thing being done above is the utilization of `PorterStemmer` 
 
 
 
-### Step 3 - Feature labelling
+### Step 3 - Feature labeling
 
 
 For the model to read the input and make effective decisions about each review, a few tasks need to be completed. First, a vocabulary needs to be constructed which contains *5,000* of the most frequently occurring words across all reviews in the training dataset. Second, each review needs to be represented as an array of *5,000* integers based on how many times each word in the vocabulary occurs in the current example. Third, the reviews need to be standardized to a fixed length of *500* words so that their arrays contain an equal number of elements.
