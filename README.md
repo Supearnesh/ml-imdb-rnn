@@ -536,7 +536,7 @@ In order to achieve the end-to-end web application deployment shown in the below
 The diagram above gives an overview of how the various services will work together. On the far right is the trained RNN model, deployed using SageMaker. On the far left is the web application that will collect users' movie reviews, send it back to the model, and display the positive or negative response.
 
 
-The middle is the part that needs to be configured; this consists of constructing a Lambda function which is simply a Python function that is executed when a specified even occurs. This function will have permission to send and receive data from the SageMaker endpoint of the model.
+The middle is the part that needs to be configured; this consists of constructing a Lambda function which is simply a Python function that is executed when a specified event occurs. This function will have permission to send and receive data from the SageMaker endpoint of the model.
 
 
 Lastly, the method used to execute the Lambda function is a new endpoint that will be created using API Gateway. This endpoint will be a URL that listens for input, passes that input to the Lambda function, and returns a response from the Lambda function. It acts as the interface for communication between the web application and the Lambda function.
